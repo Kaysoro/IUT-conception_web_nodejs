@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="/index.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h1 class="header">Tickets</h1>
+                <table id="tickets" class="centered responsive-table highlight">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Priority</th>
+                            <th>JSON Detail</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% tickets.forEach(function(ticket) { %>
+                        <tr>
+                            <td><%= ticket.id %></td>
+                            <td><%= ticket.title %></td>
+                            <td><%= ticket.priority %></td>
+                            <td>
+                                <a href="/ticket/<%= ticket.id %>" class="waves-effect waves-light btn blue blueen-4"><i class="material-icons">description</i></a>
+                            </td>
+                            <td>
+                                <a href="/ticket/delete/<%= ticket.id %>" class="waves-effect waves-light btn red darken-4"><i class="material-icons">delete_forever</i></a>
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div id="formAdd" class="col s12">
+                    <h1 class="header">Add a Ticket</h1>
+                    <form action="/add" method="GET">
+                        <div class="input-field col s6">
+                            <input placeholder="I have a problem plz help me" name="title" type="text" class="validate" required>
+                            <label for="title">Ticket Title</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="My priority is over nine THOUSAND!!!" name="priority" type="number" class="validate" required>
+                            <label for="priority">Priority</label>
+                        </div>
+                        <button class="waves-effect waves-light btn green greener-4" type="submit" name="action">
+                                <i class="material-icons left">add_box</i>Ajouter un ticket
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+</html>
